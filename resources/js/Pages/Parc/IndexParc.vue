@@ -80,7 +80,7 @@
 </template>
 
 <script setup>
-import Pagination from '../../Shared/Pagination.vue';
+import Pagination from '../../Components/Pagination.vue';
 import { ref } from 'vue';
 import { Inertia } from '@inertiajs/inertia';
 import { route } from 'ziggy-js';

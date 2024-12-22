@@ -1,5 +1,5 @@
 <template>
-    <div class="form-group">
+    <div class="form-group mb-3">
         <label>{{ name }}</label>
         <input v-model="model" :class="{ 'is-invalid': message }" class="form-control form-control-sm" :type="type" />
         <span v-if="message" class="invalid-feedback error fst-italic">

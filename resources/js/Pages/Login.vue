@@ -23,25 +23,18 @@
                         <form @submit.prevent="soumettre" class="row g-3 needs-validation">
 
                             <div class="col-12">
-                                <label for="yourUsername" class="form-label">Email</label>
-                                <div class="input-group has-validation">
-                                    <span class="input-group-text" id="inputGroupPrepend">@</span>
-                                    <input v-model="form.email" :class="{ 'is-invalid': form.errors.email }" type="text"
-                                        name="username" class="form-control" id="yourUsername">
-                                    <span v-if="form.errors.email" class="invalid-feedback error fst-italic">
-                                        {{ form.errors.email }}
-                                    </span>
-                                </div>
+                                <TextInput name="Email" v-model="form.email" :message="form.errors.email" />
                             </div>
 
                             <div class="col-12">
-                                <label for="yourPassword" class="form-label">Mot de passe</label>
-                                <input v-model="form.password" type="password" name="password" class="form-control"
-                                    id="yourPassword">
+                                <TextInput name="Mot de passe" v-model="form.password" :message="form.errors.password"
+                                    type="password" />
                             </div>
+
                             <div class="col-12">
                                 <button class="btn btn-outline-primary w-100" type="submit">Connecter</button>
                             </div>
+
                         </form>
 
                     </div>
@@ -55,6 +48,7 @@
 <script>
 import { useForm } from '@inertiajs/inertia-vue3';
 import AuthLayout from '../Layouts/AuthLayout.vue';
+import TextInput from '../Components/TextInput.vue';
 
 export default {
     layout: AuthLayout
