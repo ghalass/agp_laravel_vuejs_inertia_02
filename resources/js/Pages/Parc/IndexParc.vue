@@ -84,7 +84,7 @@ import Pagination from '../../Components/Pagination.vue';
 import { ref } from 'vue';
 import { Inertia } from '@inertiajs/inertia';
 import { route } from 'ziggy-js';
-import { showAlert, useSwalConfirm } from '../../Composables/alert';
+import { showAlert, useSwalConfirm } from '../../utils/alert';
 
 const props = defineProps({
     parcs: Object,

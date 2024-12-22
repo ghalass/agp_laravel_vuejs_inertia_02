@@ -233,7 +233,7 @@
 <script setup>
 // Importation de la fonction toggleBodyClass depuis abc.js
 import { computed } from 'vue';
-import { toggleBodyClass } from '../../utils.js';
+import { toggleBodyClass } from '../../utils/utils.js';
 
 import { route } from "ziggy-js";
 import { usePage } from '@inertiajs/inertia-vue3';

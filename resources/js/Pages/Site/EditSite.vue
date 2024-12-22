@@ -36,7 +36,7 @@ import { reactive, watch } from 'vue';
 import axios from 'axios';
 import { route } from 'ziggy-js';
 import { Inertia } from '@inertiajs/inertia';
-import { showAlert } from '../../Composables/alert';
+import { showAlert } from '../../utils/alert';
 import TextInput from '../../Components/TextInput.vue';
 
 const props = defineProps({

@@ -46,7 +46,7 @@
 import Header from "./Partials/Header.vue";
 import Sidebar from "./Partials/Sidebar.vue";
 import Footer from "./Partials/Footer.vue";
-import { toggleBodyClass } from "../utils";
+import { toggleBodyClass } from "../utils/utils";
 
 
 

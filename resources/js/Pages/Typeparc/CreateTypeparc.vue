@@ -29,7 +29,7 @@
 <script setup>
 import { Inertia } from '@inertiajs/inertia';
 import { ref } from 'vue';
-import { showAlert } from '../../Composables/alert';
+import { showAlert } from '../../utils/alert';
 import { route } from 'ziggy-js';
 import TextInput from '../../Components/TextInput.vue';
 

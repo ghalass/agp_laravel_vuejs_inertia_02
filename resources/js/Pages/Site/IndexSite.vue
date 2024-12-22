@@ -56,7 +56,7 @@ import { ref } from 'vue';
 import Pagination from '../../Components/Pagination.vue';
 import CreateSite from './CreateSite.vue';
 import EditSite from './EditSite.vue';
-import { showAlert, useSwalConfirm } from '../../Composables/alert';
+import { showAlert, useSwalConfirm } from '../../utils/alert';
 import { Inertia } from '@inertiajs/inertia';
 
 const editingElementId = ref(0)

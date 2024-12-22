@@ -73,7 +73,7 @@
 
 <script setup>
 import { ref } from 'vue';
-import { showAlert } from '../../Composables/alert';
+import { showAlert } from '../../utils/alert';
 import { route } from 'ziggy-js';
 import { useForm } from '@inertiajs/inertia-vue3';
 import axios from 'axios';

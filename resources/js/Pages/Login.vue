@@ -57,7 +57,7 @@ export default {
 </script>
 
 <script setup>
-import { showAlert } from '../Composables/alert';
+import { showAlert } from '../utils/alert';
 
 const form = useForm({
     email: "",

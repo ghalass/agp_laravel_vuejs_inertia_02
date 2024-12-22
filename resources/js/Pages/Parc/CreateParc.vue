@@ -49,7 +49,7 @@
 <script setup>
 import { Head, useForm } from '@inertiajs/inertia-vue3';
 import { route } from 'ziggy-js';
-import { showAlert } from '../../Composables/alert';
+import { showAlert } from '../../utils/alert';
 import TextInput from '../../Components/TextInput.vue';
 
 const props = defineProps({

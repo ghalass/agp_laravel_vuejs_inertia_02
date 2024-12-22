@@ -60,7 +60,7 @@
 
 <script setup>
 import { ref } from 'vue';
-import Pagination from '@/Shared/Pagination.vue';
+import Pagination from '../../Components/Pagination.vue';
 import CreateEngin from './CreateEngin.vue';
 import EditEngin from './EditEngin.vue';
 import { showAlert, useSwalConfirm } from '@/Composables/alert';
