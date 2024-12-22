@@ -14,21 +14,24 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        User::factory()->create([
-            'name' => 'Admin',
-            'email' => 'admin@example.com',
-            'email_verified_at' => now(),
-            'password' => Hash::make('password'),
-        ]);
-
         // User::factory(10)->create();
 
-        // $this->call(TypeparcSeeder::class);
+        // User::factory()->create([
+        //     'name'              => 'Admin',
+        //     'email'             => 'admin@gmail.com',
+        //     'email_verified_at' => now(),
+        //     'password'          => Hash::make('12345678'),
+        // ]);
 
-        // \App\Models\Parc::factory(10)->create();
+        $this->call(SiteSeeder::class);
 
-        // \App\Models\Engin::factory(10)->create();
+        $this->call(TypeparcSeeder::class);
+        \App\Models\Parc::factory(10)->create();
+        \App\Models\Engin::factory(10)->create();
 
+        $this->call(TypepanneSeeder::class);
+        \App\Models\Panne::factory(10)->create();
 
+        \App\Models\Saisierje::factory(10)->create();
     }
 }

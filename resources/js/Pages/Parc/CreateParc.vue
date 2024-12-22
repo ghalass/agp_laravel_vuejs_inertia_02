@@ -19,14 +19,7 @@
         <div class="card-body">
             <form @submit.prevent="soumettre" id="createForm">
                 <div class="row my-2">
-                    <div class="form-group col">
-                        <label>Nom du parc</label>
-                        <input v-model="form.name" :class="{ 'is-invalid': form.errors.name }"
-                            class="form-control form-control-sm" type="text" />
-                        <span v-if="form.errors.name" class="invalid-feedback error fst-italic">
-                            {{ form.errors.name }}
-                        </span>
-                    </div>
+                    <TextInput name="Nom du parc" v-model="form.name" :message="form.errors.name" />
 
                     <div class="form-group col">
                         <label>Type de parc</label>
@@ -57,6 +50,7 @@
 import { Head, useForm } from '@inertiajs/inertia-vue3';
 import { route } from 'ziggy-js';
 import { showAlert } from '../../Composables/alert';
+import TextInput from '../../Components/TextInput.vue';
 
 const props = defineProps({
     typeparcs: Array

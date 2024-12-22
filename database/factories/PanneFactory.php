@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Engin>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Panne>
  */
-class EnginFactory extends Factory
+class PanneFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,9 +17,8 @@ class EnginFactory extends Factory
     public function definition(): array
     {
         return [
-            'name'      => fake()->name(),
-            'parc_id'   => rand(1, 4),
-            'site_id'   => rand(1, 4),
+            'name'          => fake()->name(),
+            'typepanne_id'   => rand(1, 4),
         ];
     }
 }

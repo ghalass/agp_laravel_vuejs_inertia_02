@@ -6,19 +6,14 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Site extends Model
+class Typepanne extends Model
 {
     use HasFactory;
 
     protected $fillable = ['name'];
 
-    public function engins(): HasMany
+    function pannes(): HasMany
     {
-        return $this->hasMany(Engin::class);
-    }
-
-    public function saisierje(): HasMany
-    {
-        return $this->hasMany(Saisierje::class);
+        return $this->hasMany(Panne::class);
     }
 }

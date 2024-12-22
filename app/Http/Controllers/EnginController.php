@@ -90,4 +90,11 @@ class EnginController extends Controller
         $engin->delete();
         return redirect()->back();
     }
+
+    function get_by_parc_id($id)
+    {
+        $engins = Engin::where('parc_id', $id)->get();
+
+        return response()->json(['engins' => $engins]);
+    }
 }

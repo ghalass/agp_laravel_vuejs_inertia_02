@@ -5,21 +5,25 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Engin extends Model
+class Saisierje extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'name',
-        'parc_id',
+        'daterje',
+        'engin_id',
         'site_id',
+        'panne_id',
+        'hrm',
+        'him',
+        'nho',
+        'ni',
     ];
 
-    public function parc(): BelongsTo
+    public function engin(): BelongsTo
     {
-        return $this->belongsTo(Parc::class)->with('typeparc');
+        return $this->belongsTo(Engin::class);
     }
 
     public function site(): BelongsTo
@@ -27,8 +31,8 @@ class Engin extends Model
         return $this->belongsTo(Site::class);
     }
 
-    public function saisierje(): HasMany
+    public function panne(): BelongsTo
     {
-        return $this->hasMany(Saisierje::class);
+        return $this->belongsTo(Panne::class);
     }
 }

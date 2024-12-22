@@ -15,12 +15,7 @@
                     <form @submit.prevent="soumettre" id="editForm">
                         <div class="row">
                             <div class="col">
-                                <label for="name">Nom de l'engin</label>
-                                <input v-model="form.name" :class="{ 'is-invalid': form.errors.name }"
-                                    class="form-control form-control-sm" type="text" id="name" />
-                                <span v-if="form.errors.name" class="invalid-feedback error fst-italic">
-                                    {{ form.errors.name }}
-                                </span>
+                                <TextInput name="Nom de l'engin" v-model="form.name" :message="form.errors.name" />
                             </div>
 
                             <div class="col">
@@ -82,6 +77,7 @@ import axios from 'axios';
 import { route } from 'ziggy-js';
 import { showAlert } from '@/Composables/alert';
 import { useForm } from '@inertiajs/inertia-vue3';
+import TextInput from '../../Components/TextInput.vue';
 
 let selectedTypeparc = ref('');
 let selectedParc = ref('');

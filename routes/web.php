@@ -78,10 +78,14 @@ Route::group(['middleware' => 'auth'], function () {
             ->name('engins.update');
         Route::delete('/engins/{engin}', [EnginController::class, 'delete'])
             ->name('engins.delete');
+        Route::get('/engins/get_by_parc_id/{id}', [EnginController::class, 'get_by_parc_id'])
+            ->name('engins.get_by_parc_id');
     });
 
     Route::prefix('performaces')->group(function () {
         Route::get('/saisie_rje', [SaisieController::class, 'index'])
             ->name('saisie_rje.index');
+        Route::post('/saisie_rje/get_by_date_engin', [SaisieController::class, 'get_by_date_engin'])
+            ->name('saisie_rje.get_by_date_engin');
     });
 });

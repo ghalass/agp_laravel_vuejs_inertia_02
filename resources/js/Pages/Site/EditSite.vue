@@ -18,14 +18,7 @@
                 </div>
                 <div class="modal-body">
                     <form @submit.prevent="soumettre" id="editForm">
-                        <div class="form-group">
-                            <label for="name">Nom du type de parc</label>
-                            <input v-model="editSite.name" :class="{ 'is-invalid': editSite.nameError != '' }"
-                                class="form-control form-control-sm" type="text" id="name" />
-                            <span v-if="editSite.nameError != ''" class="invalid-feedback error fst-italic">
-                                {{ editSite.nameError }}
-                            </span>
-                        </div>
+                        <TextInput name="Nom du site" v-model="editSite.name" :message="editSite.nameError" />
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -44,6 +37,7 @@ import axios from 'axios';
 import { route } from 'ziggy-js';
 import { Inertia } from '@inertiajs/inertia';
 import { showAlert } from '../../Composables/alert';
+import TextInput from '../../Components/TextInput.vue';
 
 const props = defineProps({
     siteId: {

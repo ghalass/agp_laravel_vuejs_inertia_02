@@ -14,14 +14,7 @@
                 </div>
                 <div class="modal-body">
                     <form @submit.prevent="soumettre" id="createForm">
-                        <div class="form-group">
-                            <label for="name">Nom du type de parc</label>
-                            <input v-model="typeparcName" :class="{ 'is-invalid': nameError != '' }"
-                                class="form-control form-control-sm" type="text" id="name" />
-                            <span v-if="nameError != ''" class="invalid-feedback error fst-italic">
-                                {{ nameError }}
-                            </span>
-                        </div>
+                        <TextInput name="Nom du type de parc" v-model="typeparcName" :message="nameError" />
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -38,6 +31,8 @@ import { Inertia } from '@inertiajs/inertia';
 import { ref } from 'vue';
 import { showAlert } from '../../Composables/alert';
 import { route } from 'ziggy-js';
+import TextInput from '../../Components/TextInput.vue';
+
 
 let typeparcName = ref("");
 let nameError = ref("");

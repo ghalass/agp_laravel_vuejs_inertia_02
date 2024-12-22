@@ -2,14 +2,26 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Inertia\Inertia;
 
 class AuthController extends Controller
 {
     function showLogin()
     {
+        $user = User::where('email', '=', 'admin@admin.com')->first();
+        // dd(!$user);
+        if (!$user) {
+            User::create([
+                'name'              => 'Admin',
+                'email'             => 'admin@admin.com',
+                'email_verified_at' => now(),
+                'password'          => Hash::make('@dmin12345678'),
+            ]);
+        }
         return Inertia::render("Login");
     }
 
