@@ -75,9 +75,9 @@
 import { ref, watch } from 'vue';
 import axios from 'axios';
 import { route } from 'ziggy-js';
-import { showAlert } from '@/Composables/alert';
 import { useForm } from '@inertiajs/inertia-vue3';
 import TextInput from '../../Components/TextInput.vue';
+import { showAlert } from '../../utils/alert';
 
 let selectedTypeparc = ref('');
 let selectedParc = ref('');

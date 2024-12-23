@@ -17,21 +17,21 @@ class DatabaseSeeder extends Seeder
         // User::factory(10)->create();
 
         // User::factory()->create([
-        //     'name'              => 'Admin',
-        //     'email'             => 'admin@gmail.com',
+        //     'name'              => 'User',
+        //     'email'             => 'user@gmail.com',
         //     'email_verified_at' => now(),
         //     'password'          => Hash::make('12345678'),
         // ]);
 
-        $this->call(SiteSeeder::class);
+        // $this->call(SiteSeeder::class);
 
-        $this->call(TypeparcSeeder::class);
-        \App\Models\Parc::factory(10)->create();
-        \App\Models\Engin::factory(10)->create();
+        // $this->call(TypeparcSeeder::class);
+        // \App\Models\Parc::factory(10)->create();
+        // \App\Models\Engin::factory(10)->create();
 
-        $this->call(TypepanneSeeder::class);
-        \App\Models\Panne::factory(10)->create();
+        // $this->call(TypepanneSeeder::class);
+        // \App\Models\Panne::factory(10)->create();
 
-        \App\Models\Saisierje::factory(10)->create();
+        // \App\Models\Saisierje::factory(10)->create();
     }
 }

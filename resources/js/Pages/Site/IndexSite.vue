@@ -7,14 +7,11 @@
         <h1>Liste des Site</h1>
     </div>
 
-    <div class="card">
+    <div class="card pt-4">
         <div class="card-body ">
             <div class="d-flex justify-content-between align-items-center">
 
                 <CreateSite />
-
-                <Pagination :links="props.sites.links" :prev="props.sites.prev_page_url"
-                    :next="props.sites.next_page_url" />
 
             </div>
 
@@ -45,6 +42,9 @@
             <!-- End Table with hoverable rows -->
 
         </div>
+        <div class="card-footer">
+            <Pagination :paginator="props.sites" />
+        </div>
     </div>
 
     <EditSite :site-id="editingElementId" :show="showModal" @modal-closed="modalClosed" />
@@ -53,17 +53,18 @@
 
 <script setup>
 import { ref } from 'vue';
-import Pagination from '../../Components/Pagination.vue';
+// import Pagination from '../../Components/Pagination.vue';
 import CreateSite from './CreateSite.vue';
 import EditSite from './EditSite.vue';
 import { showAlert, useSwalConfirm } from '../../utils/alert';
 import { Inertia } from '@inertiajs/inertia';
+import Pagination from '../../Components/Pagination.vue';
 
 const editingElementId = ref(0)
 const showModal = ref(false)
 
 const props = defineProps({
-    sites: Object
+    sites: Object,
 })
 
 const modalClosed = () => {

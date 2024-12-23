@@ -2,3 +2,4 @@
 export function toggleBodyClass(className) {
     document.body.classList.toggle(className);
 }
+

@@ -7,15 +7,16 @@
         <h1>Liste des Engin</h1>
     </div>
 
-    <div class="card">
+    <div class="card pt-4">
         <div class="card-body ">
             <div class="d-flex justify-content-between align-items-center">
+                <div class="d-flex gap-1">
+                    <CreateEngin :sites="props.sites" :typeparcs="props.typeparcs" />
 
-                <CreateEngin :sites="props.sites" :typeparcs="props.typeparcs" />
 
-                <Pagination :links="props.engins.links" :prev="props.engins.prev_page_url"
-                    :next="props.engins.next_page_url" />
-
+                    <input v-model="search" type="text" class="form-control form-control-sm" placeholder="Chercher...">
+                    <button @click="search = ''" class="btn btn-sm btn-outline-info">Effacer</button>
+                </div>
             </div>
 
             <!-- Table with hoverable rows -->
@@ -36,20 +37,27 @@
                         <td>{{ engin.parc.typeparc.name }}</td>
                         <td>{{ engin.site.name }}</td>
                         <td class="d-flex justify-content-end gap-1">
+
                             <button @click="openEditModal(engin.id)" type="button"
                                 class="btn btn-sm btn-outline-primary rounded-pill">
                                 <i class="bi bi-pencil"></i>
                             </button>
+
+
                             <button @click="deleteConfirmation(engin.id)" type="button"
                                 class="btn btn-sm btn-outline-danger rounded-pill">
                                 <i class="bi bi-trash3"></i>
                             </button>
+
                         </td>
                     </tr>
                 </tbody>
             </table>
             <!-- End Table with hoverable rows -->
 
+        </div>
+        <div class="card-footer">
+            <Pagination :paginator="props.engins" />
         </div>
     </div>
 
@@ -59,12 +67,14 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 import Pagination from '../../Components/Pagination.vue';
 import CreateEngin from './CreateEngin.vue';
 import EditEngin from './EditEngin.vue';
-import { showAlert, useSwalConfirm } from '@/Composables/alert';
+import { showAlert, useSwalConfirm } from '../../utils/alert';
 import { Inertia } from '@inertiajs/inertia';
+import { route } from 'ziggy-js';
+import { debounce } from 'lodash';
 
 const editingElementId = ref(0)
 const showModal = ref(false)
@@ -73,7 +83,19 @@ const props = defineProps({
     engins: Object,
     typeparcs: Object,
     sites: Object,
+    searchTerm: String,
 })
+
+const search = ref(props.searchTerm)
+watch(search, debounce(
+    (q) => {
+        const url = route('engins.index', { search: q });
+        Inertia.get(url, {}, {
+            replace: true,
+            preserveState: true,
+        });
+    }, 500)
+)
 
 const modalClosed = () => {
     editingElementId.value = 0;

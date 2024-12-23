@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Site;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 
 class SiteController extends Controller
@@ -11,7 +12,12 @@ class SiteController extends Controller
     function index()
     {
         $sites = Site::latest()->paginate(2);
-        return inertia('Site/IndexSite', ['sites' => $sites]);
+        return inertia('Site/IndexSite', [
+            'sites' => $sites,
+            'can'   => [
+                'createSite' => Auth::user()->can('create', Site::class)
+            ]
+        ]);
     }
     function store(Request $request)
     {

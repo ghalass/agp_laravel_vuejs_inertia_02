@@ -2,19 +2,15 @@
 
     <Head title="Typeparcs" />
 
-    <!-- Content specific to this page -->
     <div class="content-header">
         <h1>Liste des Typeparc</h1>
     </div>
 
-    <div class="card">
+    <div class="card pt-4">
         <div class="card-body ">
             <div class="d-flex justify-content-between align-items-center">
 
                 <CreateTypeparc />
-
-                <Pagination :links="props.typeparcs.links" :prev="props.typeparcs.prev_page_url"
-                    :next="props.typeparcs.next_page_url" />
 
             </div>
 
@@ -45,6 +41,9 @@
             <!-- End Table with hoverable rows -->
 
         </div>
+        <div class="card-footer">
+            <Pagination :paginator="props.typeparcs" />
+        </div>
     </div>
 
     <EditTypeparc :typeparc-id="editingElementId" :show="showModal" @modal-closed="modalClosed" />
@@ -53,11 +52,11 @@
 
 <script setup>
 import { ref } from 'vue';
-import Pagination from '../../Components/Pagination.vue';
 import CreateTypeparc from './CreateTypeparc.vue';
 import EditTypeparc from './EditTypeparc.vue';
 import { showAlert, useSwalConfirm } from '../../utils/alert';
 import { Inertia } from '@inertiajs/inertia';
+import Pagination from '../../Components/Pagination.vue';
 
 const editingElementId = ref(0)
 const showModal = ref(false)

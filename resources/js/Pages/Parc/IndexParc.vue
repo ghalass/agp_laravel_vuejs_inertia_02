@@ -6,7 +6,7 @@
         <h1>Liste des Parcs</h1>
     </div>
 
-    <div class="card">
+    <div class="card pt-4">
         <div class="card-body ">
             <div class="d-flex justify-content-between align-items-center">
 
@@ -26,14 +26,10 @@
                         <option value="50">50</option>
                         <option value="100">100</option>
                     </select>
-
-                    <Pagination :links="props.parcs.links" :prev="props.parcs.prev_page_url"
-                        :next="props.parcs.next_page_url" />
                 </div>
 
             </div>
 
-            <!-- Table with hoverable rows -->
             <table class="table table-hover">
                 <thead>
                     <tr>
@@ -72,19 +68,22 @@
                     </tr>
                 </tbody>
             </table>
-            <!-- End Table with hoverable rows -->
 
+        </div>
+        <div class="card-footer">
+            <Pagination :paginator="props.parcs" />
         </div>
     </div>
 
 </template>
 
 <script setup>
-import Pagination from '../../Components/Pagination.vue';
 import { ref } from 'vue';
 import { Inertia } from '@inertiajs/inertia';
 import { route } from 'ziggy-js';
 import { showAlert, useSwalConfirm } from '../../utils/alert';
+import Pagination from '../../Components/Pagination.vue';
+
 
 const props = defineProps({
     parcs: Object,

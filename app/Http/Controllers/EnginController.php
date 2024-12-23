@@ -11,18 +11,29 @@ use Illuminate\Validation\Rule;
 
 class EnginController extends Controller
 {
-    function index()
+    function index(Request $request)
     {
-        $engins = Engin::with('parc')
+        $engins = Engin::when($request->search, function ($query) use ($request) {
+            $query
+                ->where('name', 'like', '%' . $request->search . '%')
+                ->orWhereRelation('parc', 'name', 'like', '%' . $request->search . '%')
+                ->orWhereRelation('site', 'name', 'like', '%' . $request->search . '%')
+            ;
+        })
+            ->with('parc')
             ->with('site')
             ->latest()
-            ->paginate(5);
+            ->paginate(5)
+            ->withQueryString();
+
         $typeparcs = Typeparc::all();
         $sites = Site::all();
+
         return inertia('Engin/IndexEngin', [
-            'engins'    => $engins,
-            'typeparcs' => $typeparcs,
-            'sites'     => $sites,
+            'engins'            => $engins,
+            'typeparcs'         => $typeparcs,
+            'sites'             => $sites,
+            'searchTerm'        => $request->search,
         ]);
     }
 

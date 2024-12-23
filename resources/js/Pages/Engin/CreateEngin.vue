@@ -1,6 +1,6 @@
 <template>
-    <button @click="openModal" type="button" class="btn btn-sm btn-outline-primary">
-        <i class="bi bi-plus-lg"></i> Nouveau
+    <button @click="openModal" type="button" class="btn btn-sm btn-outline-primary d-flex gap-1">
+        <i class="bi bi-plus-lg"></i>Nouveau
     </button>
 
     <div class="modal modal-lg fade" id="createEnginModal" data-bs-backdrop="static" data-bs-keyboard="false"
@@ -69,6 +69,7 @@
             </div>
         </div>
     </div>
+
 </template>
 
 <script setup>
